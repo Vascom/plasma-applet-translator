@@ -11,6 +11,8 @@ Source0:        http://qml.i-glu4it.ru/%{orig_name}_%{version}.tar.gz
 
 BuildArch:      noarch
 
+BuildRequires:  desktop-file-utils
+
 Requires:       translate-shell
 Requires:       plasma-workspace
 
@@ -29,6 +31,8 @@ mkdir -p %{buildroot}%{_datadir}/plasma/plasmoids/%{orig_name}
 cp -r contents %{buildroot}%{_datadir}/plasma/plasmoids/%{orig_name}/
 install -pm 644 metadata.desktop %{buildroot}%{_datadir}/plasma/plasmoids/%{orig_name}/metadata.desktop
 
+%check
+desktop-file-validate %{buildroot}%{_datadir}/plasma/plasmoids/%{orig_name}/metadata.desktop
 
 %files
 %license LICENSE
